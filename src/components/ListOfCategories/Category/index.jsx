@@ -1,8 +1,7 @@
-import React from 'react'
+import React from 'react';
 import {
   Clink, Image
-} from './styles'
-
+} from './styles';
 const DEFAULT_IMAGE = 'https://i.imgur.com/dJa0Hpl.jpg';
 
 export const Category = ({
@@ -14,4 +13,4 @@ export const Category = ({
     <Image src={cover} />
     {emoji}
   </Clink>
-)
+);
