@@ -16,7 +16,7 @@ export function useStorage (key, initialValue){
     let val = false;
     try {
       const item = window.localStorage.getItem(key);
-      val = item !== null ? JSON.parse(item) === true : initialValue;
+      val = item !== null ? JSON.parse(item) : initialValue;
       return val;
     } catch (e) {
       val = false;
