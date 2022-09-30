@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { GET_PHOTO } from '../../queries';
+import { GET_PHOTO } from '../../graphql/queries';
 
 
 export function useGetPhoto(id) {

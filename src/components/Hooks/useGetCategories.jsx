@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { GET_CATEGORIES } from '../../queries';
+import { GET_CATEGORIES } from '../../graphql/queries';
 
 
 export function useGetCategories() {

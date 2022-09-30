@@ -20,7 +20,7 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0 auto;
     max-width: 500px;
     overscroll-behavior: none;
-    width: 100%; 
+    width: 100%;
   }
 
   #app {
@@ -28,5 +28,34 @@ export const GlobalStyles = createGlobalStyle`
     overflow-x: hidden;
     min-height: 100vh;
     padding-bottom: 10px;
+    width: 500px;
+  }
+
+  .is-flex {
+    display: flex;
+  }
+
+  .is-flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .justify-content-end {
+    justify-content: end;
+  }
+
+  .justify-content-center {
+    justify-content: center;
+  }
+
+  .justify-content-space-between {
+    justify-content: space-between;
+  }
+
+  .align-items-center {
+    align-items: center;
+  }
+  .align-content-center {
+    align-content: center;
   }
 `

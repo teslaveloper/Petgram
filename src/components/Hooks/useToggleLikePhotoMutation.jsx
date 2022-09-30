@@ -1,6 +1,6 @@
 import React from 'react';
-import { gql, useMutation } from '@apollo/client';
-import { LIKE_PHOTO_MUTATION } from '../../queries';
+import { useMutation } from '@apollo/client';
+import { LIKE_PHOTO_MUTATION } from '../../graphql/queries';
 
 export const useToggleLikePhotoMutation = (id) => {
   // Pass mutation to useMutation

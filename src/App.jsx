@@ -1,5 +1,11 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes, Link, Navigate, Outlet } from 'react-router-dom';
+import React, { useContext } from 'react';
+import {
+  Route,
+  Routes,
+  Link
+} from 'react-router-dom';
+
+import { AuthContext } from './AuthProviderManager';
 
 import { GlobalStyles } from 'components/styles/GlobalStyles';
 import { Logo } from 'components/Logo';
@@ -14,55 +20,54 @@ import { NotRegistered } from 'components/pages/NotRegistered';
 import { NotFound } from 'components/pages/NotFound';
 import { Analytics } from 'components/pages/Analytics';
 import { Login } from 'components/pages/Login';
-import AuthUserContext from './AuthUserContext';
 
 import { useHandleLogin } from 'components/Hooks/useHandleLogin';
+import { useLocation } from 'react-router-dom'
 
 export const App = () => {
   // const urlParamas = new window.URLSearchParams(window.location.search);
   // const detailId = urlParamas.get('id ');
-  const [user, handleLogin, handleLogout] = useHandleLogin();
-  const contextValue = { user: user, login: handleLogin, logout: handleLogout }
+  // const contextValue = { user: user, login: handleLogin, logout: handleLogout }
+  // const location = useLocation();
+  // const isIndex = location.pathname === '/';
 
+  // console.log(location.pathname);
+  const { userToken } = useContext(AuthContext);
+
+  console.log('app user', userToken);
   return (
     <React.StrictMode>
       <GlobalStyles />
-      <BrowserRouter>
-        <AuthUserContext.Provider value={contextValue}>
-          <Link to={`/`}> <Logo /> </Link>
-          <StatusBar />
-          <Routes>
-            <Route index path="/" element={<Home />}/>
-            <Route exact path="/category/:id" element={<Home />}/>
-            <Route exact path="/photo/:id" element={ <Detail />} />
-            <Route exact path="/not_registered" element={<NotRegistered />}/>
+      <Link to={`/`}> <Logo /> </Link>
+      <StatusBar />
+      <Routes>
+        <Route index path="/" element={<Home />}/>
+        <Route exact path="/category/:id" element={<Home />}/>
+        <Route exact path="/photo/:id" element={ <Detail />} />
 
-            <Route exact path="/login" element={
-              <ProtectedRoute redirectPath="/" isAllowed={!user} >
-                <Login />
-              </ProtectedRoute>
-            } />
+        <Route element={ <ProtectedRoute redirectPath="/" isAllowed={!userToken} />}>
+            <Route path="login" element={<Login />} />
+            <Route path="not_registered" element={<NotRegistered />} />
+        </Route>
 
-            <Route exact path="/analytics" element={
-              <ProtectedRoute redirectPath="/"
-                isAllowed={
-                  !!user && user.permissions.includes('analyzer')
-                }
-              >
-                <Analytics />
-              </ProtectedRoute>
-            } />
+        <Route exact path="/analytics" element={
+          <ProtectedRoute redirectPath="/"
+            isAllowed={
+              !!userToken //&& user.permissions.includes('analyzer')
+            }
+          >
+            <Analytics />
+          </ProtectedRoute>
+        } />
 
-            <Route element={<ProtectedRoute isAllowed={!!user} />}>
-              <Route path="favorites" element={<Favs />} />
-              <Route path="user" element={<User />} />
-            </Route>
+        <Route element={<ProtectedRoute isAllowed={!!userToken} />}>
+          <Route path="favorites" element={<Favs />} />
+          <Route path="user" element={<User />} />
+        </Route>
 
-            <Route path="*" element={<NotFound />}/>
-          </Routes>
-          <NavBar />
-        </AuthUserContext.Provider>
-      </BrowserRouter>
+        <Route path="*" element={<NotFound />}/>
+      </Routes>
+      <NavBar />
     </React.StrictMode>
   )
 }
