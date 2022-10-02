@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { ListOfCategories } from 'components/ListOfCategories'
 import { ListOfPhotoCardsContainer } from 'containers/ListOfPhotoCardsContainer'
 import { useParams } from 'react-router-dom'
+import { Layout } from 'components/Layout';
 
-export const Home = () => {
+const Home = () => {
 	const params = useParams();
 	const { id } = params;
 
 	return (
-		<>
+		<Layout
+      title=""
+      subtitle=''
+    >
 		  <ListOfCategories />
 		  <ListOfPhotoCardsContainer categoryId={id} />
-		</>
-	)
+		</Layout>)
 }
+
+export default Home

@@ -3,7 +3,7 @@ import { UserForm } from 'components/UserForm'
 import { AuthContext } from '../../AuthProviderManager';
 import { useMutationSignUp } from 'components/Hooks/useMutationSignUp';
 
-export const NotRegistered = () => {
+const NotRegistered = () => {
   const { storeToken } = useContext(AuthContext);
   const { sigupUser, data, loading, error, reset } = useMutationSignUp(false);
 
@@ -45,3 +45,5 @@ export const NotRegistered = () => {
     />
   )
 }
+
+export default NotRegistered;

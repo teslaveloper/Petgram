@@ -8,13 +8,11 @@ const initialState = {
   deleteToken: () => {}
 };
 
-// este se usa como hook
+// used as hook params
 export const AuthContext = createContext(initialState);
 
-
-// este va en las rutasa
+// used on routes
 export const AuthProvider = ({children}) => {
-  // const [user, handleLogin, handleLogout] = useHandleLogin(null);
   const [token, setToken] = useStorage('pgus-tk', null)
 
   const value = {

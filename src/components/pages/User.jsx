@@ -1,5 +1,7 @@
 import React from 'react';
 
-export const User = () => (
+const User = () => (
 	<h1>User</h1>
 )
+
+export default User;

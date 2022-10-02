@@ -1,17 +1,28 @@
 import React, { useState } from 'react';
 import { Nav, Link } from './styles';
 import { MdHome, MdFavoriteBorder, MdPersonOutline } from 'react-icons/md';
+import { useLocation } from 'react-router-dom'
 
 const SIZE = "32px";
 
 export const NavBar = () => {
-  const [section, setSection] = useState('home')
+  const location = useLocation();
+
+  const getActiveClass = (section) => {
+    const { pathname } = location;
+
+    if(pathname !== '/' && section !== '/' && pathname.indexOf(section) > -1 ) return 'is-active'
+    if(pathname !== '/' && section === '/' && pathname.indexOf('/category') > -1) return 'is-active'
+    if(pathname === '/' && section === pathname ) return 'is-active'
+
+    return '';
+  }
 
   return (
       <Nav>
-        <Link to='/' className={`${section === 'home' ? 'is-active' : '' }`} onClick={() => setSection('home')}><MdHome size={SIZE} /></Link>
-        <Link to='/favorites' className={`${section === 'favs' ? 'is-active' : ''}`} onClick={() => setSection('favs')}><MdFavoriteBorder size={SIZE} /></Link>
-        <Link to='/user' className={`${section === 'user' ? 'is-active' : '' }`} onClick={() => setSection('user')}><MdPersonOutline size={SIZE} /></Link>
+        <Link to='/' className={` ${getActiveClass('/')}`} ><MdHome size={SIZE} /></Link>
+        <Link to='/favorites' className={` ${getActiveClass('/favorites')}`}><MdFavoriteBorder size={SIZE} /></Link>
+        <Link to='/user' className={` ${getActiveClass('/user')}`}><MdPersonOutline size={SIZE} /></Link>
       </Nav>
-  )
+  );
 }

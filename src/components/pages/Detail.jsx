@@ -1,6 +1,8 @@
 import React from 'react';
 import { PhotoCardContainer } from 'containers/PhotoCardContainer'
 
-export const Detail = () => (
+const Detail = () => (
   <PhotoCardContainer />
 )
+
+export default Detail;

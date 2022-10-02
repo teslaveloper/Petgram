@@ -3,7 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 export const ProtectedRoute = ({
 isAllowed,
-redirectPath = '/not_registered',
+redirectPath = '/login',
 children }
 ) => {
   if (!isAllowed) {

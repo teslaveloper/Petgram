@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
-export const Analytics = () => {
+import React from 'react';
+
+const Analytics = () => {
 
 	return (
 		<>
@@ -7,4 +8,6 @@ export const Analytics = () => {
 				Try Login
 		</>
 	)
-}
+};
+
+export default Analytics;

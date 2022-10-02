@@ -1,11 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
 import { ApolloClient, InMemoryCache, HttpLink, from, ApolloProvider } from '@apollo/client'
 import { App } from './App'
 import { BrowserRouter } from 'react-router-dom';
-import { AuthProvider } from './AuthProviderManager';
 import { onError } from "@apollo/client/link/error";
-import process from "process";
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
@@ -50,9 +49,7 @@ const root = ReactDOM.createRoot(document.getElementById('app'))
 root.render(
   <ApolloProvider client={client}>
     <BrowserRouter>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
+      <App />
     </BrowserRouter>
   </ApolloProvider>
 )

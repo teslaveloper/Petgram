@@ -3,7 +3,7 @@ import { UserForm } from 'components/UserForm'
 import { AuthContext } from '../../AuthProviderManager';
 import { useMutationSignIn } from 'components/Hooks/useMutationSignIn';
 
-export const Login = () => {
+const Login = () => {
   const { storeToken } = useContext(AuthContext);
   const { signInUser, data, loading, error, reset } = useMutationSignIn();
 
@@ -17,12 +17,12 @@ export const Login = () => {
 
   const handleLogin = (values) => {
     console.log('values', values);
-    signInUser({variables: { input: values } })
-  }
+    signInUser({variables: { input: values } });
+  };
 
   const handleReset = () => {
     reset();
-  }
+  };
 
   return (
     <UserForm
@@ -34,4 +34,6 @@ export const Login = () => {
       reset={handleReset}
     />
   )
-}
+};
+
+export default Login;

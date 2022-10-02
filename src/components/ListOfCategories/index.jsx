@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { memo } from 'react';
 import { Category } from 'components/ListOfCategories/Category';
 import {
   List, Item
@@ -6,7 +6,7 @@ import {
 import { useGetCategories } from 'components/Hooks/useGetCategories';
 import { useHideOnScroll } from 'components/Hooks/useHideOnScroll';
 
-export const ListOfCategories = () => {
+const ListOfCategoriesComponet = () => {
   const { loading, data, error } = useGetCategories()
   const { show } = useHideOnScroll();
 
@@ -36,3 +36,5 @@ export const ListOfCategories = () => {
     </>
   );
 }
+
+export const ListOfCategories = memo(ListOfCategoriesComponet)

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Span, Svg } from './styles'
 
-export const Logo = (props) => (
+export const Logo = () => (
   <Span>
     <Svg
       width={387.96}
@@ -12,7 +12,6 @@ export const Logo = (props) => (
         background: '0 0',
       }}
       preserveAspectRatio='xMidYMid'
-      {...props}
     >
       <defs>
         <linearGradient
