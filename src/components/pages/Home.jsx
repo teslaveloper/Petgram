@@ -10,7 +10,7 @@ const Home = () => {
 
 	return (
 		<Layout
-      title=""
+      title="Home"
       subtitle=''
     >
 		  <ListOfCategories />

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   MdFavoriteBorder, MdFavorite
 } from 'react-icons/md'
@@ -17,4 +18,10 @@ export const LikeButton = ({
 	    {likes} likes!
 	  </Button>
 	)
+}
+
+LikeButton.propTypes = {
+  liked: PropTypes.bool.isRequired,
+	likes: PropTypes.number.isRequired,
+	onClick: PropTypes.func.isRequired
 }

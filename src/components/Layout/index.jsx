@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Div, Title, SubTitle } from './styles';
+import { SubHeader, Title, SubTitle } from './styles';
 
 export const Layout = ({children, title, subtitle}) => {
   return (
@@ -9,11 +9,11 @@ export const Layout = ({children, title, subtitle}) => {
         {title && <title> {title} | Petgram </title>}
         {subtitle && <meta name='description' content={subtitle} />}
       </Helmet>
-      <Div>
+      <SubHeader>
         {title && <Title> {title}</Title>}
         {subtitle && <SubTitle> {subtitle}</SubTitle>}
         {children}
-      </Div>
+      </SubHeader>
     </>
   )
 }
